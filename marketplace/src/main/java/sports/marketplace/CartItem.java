@@ -14,10 +14,9 @@ import java.util.List;
 public class CartItem {
     public Long id; // id товара
     public User user; // пользователь
-    public Product product; // продукт
-    public Integer quantity; //количество товара
-
-    public double getSubTotal(double totalSum){
+    public  Product product; // продукт
+    public  Integer quantity; //количество товара
+    public static double getSubtotal(double totalSum){
         totalSum = quantity * product.price;
         return totalSum;
     }
@@ -42,4 +41,5 @@ public class CartItem {
                 .findFirst()
                 .ifPresent(item -> item.setQuantity(quantity)); // обновление корзины
     }
+
 }
