@@ -27,24 +27,19 @@ public class CartItem {
     }
 
     private List<CartItem> cartItems = new ArrayList<>(); //личная корзина
-    public void add(Long id, User user, Integer quantity, Product product){
-        CartItem newItem = CartItem.builder()
-                .id(this.getId())
-                .user
-                .quantity
-                .product
-                .build();
-        cartItems.add(newItem); // реализация личной корзины
+    public void add(CartItem cartItem){
+        cartItems.add(cartItem); // реализация личной корзины
     }
     public double remove(double emptyShoppingCart){
         return emptyShoppingCart;
     }
-
-    public double update(double updateCartItem){
-        return updateCartItem;
-    }
-
     public void clear(){
         cartItems.clear(); // очистить корзину
+    }
+    public void updateCartItem(User user, Long productId, Integer quantity) {
+        cartItems.stream()
+                .filter(item -> item.getProduct().equals(productId))
+                .findFirst()
+                .ifPresent(item -> item.setQuantity(quantity)); // обновление корзины
     }
 }

@@ -51,18 +51,10 @@ public class    User implements UserDetails {
                 .build();
         cartItems.add(newItem); // реализация личной корзины
     }
-
     public void remove(Long productId){
         cartItems.removeIf(item -> item.getProduct().equals(productId)); // удаление из корзины
     }
-
-    public void updateCartItem(User user, Long productId, Integer quantity) {
-        cartItems.stream()
-                .filter(item -> item.getProduct().equals(productId))
-                .findFirst()
-                .ifPresent(item -> item.setQuantity(quantity)); // обновление корзины
-    }
-
+    
     public void clear(){
         cartItems.clear(); // очистить корзину
     }
