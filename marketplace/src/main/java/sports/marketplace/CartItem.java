@@ -16,10 +16,7 @@ public class CartItem {
     public User user; // пользователь
     public  Product product; // продукт
     public  Integer quantity; //количество товара
-    public static double getSubtotal(double totalSum){
-        totalSum = quantity * product.price;
-        return totalSum;
-    }
+
 
     public void setQuantity(Integer quantityProduct){
         quantity = quantityProduct;
@@ -42,4 +39,8 @@ public class CartItem {
                 .ifPresent(item -> item.setQuantity(quantity)); // обновление корзины
     }
 
+    public double getSubtotal() {
+        double totalSum = quantity * product.price;
+        return totalSum;
+    }
 }
